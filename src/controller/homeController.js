@@ -15,7 +15,13 @@ let getHomePage = (rew, res) => {
     data = results.map((row) => {
       return row;
     });
-    return res.render("test/index.ejs", { dataUser: JSON.stringify(data) });
+    return res.render("index.ejs", {
+      dataUser:
+        // JSON.stringify(
+        data,
+      test: "test la test",
+      // )
+    });
   });
 };
 // module.exports = { getHomePage };
