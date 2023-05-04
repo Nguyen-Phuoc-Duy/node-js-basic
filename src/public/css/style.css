@@ -26,3 +26,19 @@ body {
     background-color: #04AA6D;
     color: white;
   }
+  a {
+    text-decoration: none;
+  }
+  .create-user-container{
+    text-align: center;
+    padding: 15px;
+  }
+  .create-user-container label {
+    display: block;
+  }
+  .create-user-container .btn-submit {
+    margin-top: 15px;
+  }
+  button {
+    cursor: pointer;
+  }

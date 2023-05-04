@@ -7,6 +7,7 @@ const initWebRoute = (app) => {
   //     res.render("test/index.ejs");
   //   });
   router.get("/detail/user/:id", homeController.getDetailPage);
+  router.post("/create-new-user", homeController.createNewUser);
   router.get("/", homeController.getHomePage);
   router.get("/home", (req, res) => {
     res.send("Hello World! Phuong Phuong");
