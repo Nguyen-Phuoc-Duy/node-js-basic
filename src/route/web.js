@@ -6,6 +6,7 @@ const initWebRoute = (app) => {
   //   router.get("/", (req, res) => {
   //     res.render("test/index.ejs");
   //   });
+  router.get("/detail/user/:id", homeController.getDetailPage);
   router.get("/", homeController.getHomePage);
   router.get("/home", (req, res) => {
     res.send("Hello World! Phuong Phuong");
