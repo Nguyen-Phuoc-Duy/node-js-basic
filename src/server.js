@@ -6,12 +6,16 @@ import path from "path";
 import { fileURLToPath } from "url";
 import initWebRoute from "./route/web.js";
 import * as dotenv from "dotenv";
+import e from "express";
 // import connection from "./configs/connectDB.js";
 dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
 const port = process.env.PORT || 3000;
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 // setup view engine
 configViewEngine(app);
 
