@@ -1,0 +1,69 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <title>Update User</title>
+  </head>
+  <body>
+    <div class="form-update">
+      <div>
+        <form action="/" method="get">
+          <button type="submit">Back</button>
+        </form>
+      </div>
+      <div class="update-user-container">
+        <form action="/update-user" method="post">
+          <div>
+            <label>First Name:</label>
+            <input name="firstName" value="<%= dataUser.firstname %>" />
+          </div>
+          <div>
+            <label>last Name:</label>
+            <input name="lastName" value="<%= dataUser.lastname %>" />
+          </div>
+          <div>
+            <label>Email:</label>
+            <input name="email" value="<%= dataUser.email %>" />
+          </div>
+          <div>
+            <label>Address</label>
+            <input name="address" value="<%= dataUser.address %>" />
+          </div>
+          <div>
+            <input name="id" value="<%= dataUser.id %>" hidden />
+          </div>
+          <div>
+            <button type="submit" class="btn-save">Save</button>
+          </div>
+        </form>
+      </div>
+      <!-- cach2 -->
+      <div class="update-user-container">
+        <form action="/update-user/<%= dataUser.id %>" method="post">
+          <div>
+            <label>First Name:</label>
+            <input name="firstName" value="<%= dataUser.firstname %>" />
+          </div>
+          <div>
+            <label>last Name:</label>
+            <input name="lastName" value="<%= dataUser.lastname %>" />
+          </div>
+          <div>
+            <label>Email:</label>
+            <input name="email" value="<%= dataUser.email %>" />
+          </div>
+          <div>
+            <label>Address</label>
+            <input name="address" value="<%= dataUser.address %>" />
+          </div>
+          <div>
+            <button type="submit" class="btn-save">Save2</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

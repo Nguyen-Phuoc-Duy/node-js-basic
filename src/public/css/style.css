@@ -29,16 +29,41 @@ body {
   a {
     text-decoration: none;
   }
-  .create-user-container{
+  .create-user-container,
+  .update-user-container{
     text-align: center;
     padding: 15px;
   }
   .create-user-container label {
     display: block;
   }
-  .create-user-container .btn-submit {
+  .update-user-container label {
+    display: block;
+  }
+  .create-user-container .btn-submit,
+  .update-user-container,
+  .update-user-container .btn-save {
     margin-top: 15px;
   }
   button {
     cursor: pointer;
+  }
+  .form-container {
+    display: flex;
+  }
+  .form-container form {
+    margin-right: 10px;
+    margin-bottom: 0px !important;
+  }
+  td {
+    vertical-align: inherit !important;
+  }
+  .form-update {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    margin: auto;
+    border: #333 solid 1px;
+    margin-top: 20px;
+    width: fit-content
   }
