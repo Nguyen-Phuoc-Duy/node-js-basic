@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 import initWebRoute from "./route/web.js";
 import * as dotenv from "dotenv";
 import e from "express";
+import initAPIRoute from "./route/api.js";
 // import connection from "./configs/connectDB.js";
 dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
@@ -24,6 +25,8 @@ initWebRoute(app);
 // app.get("/home", (req, res) => {
 //   res.send("Hello World! Phuong Phuong");
 // });
+// init api route
+initAPIRoute(app);
 app.get("/1", (req, res) => {
   res.sendFile(path.join(__dirname, "./index.html"));
 });
