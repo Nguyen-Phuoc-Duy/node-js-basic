@@ -1,6 +1,39 @@
 import express from "express";
 let router = express.Router();
+import multer from "multer";
+import path from "path";
+import appRoot from "app-root-path";
 import homeController from "../controller/homeController.js";
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, appRoot + "/src/public/image/");
+  },
+
+  // By default, multer removes file extensions so let's add them back
+  filename: function (req, file, cb) {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+
+const imageFilter = function (req, file, cb) {
+  // Accept images only
+  if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
+    req.fileValidationError = "Only image files are allowed!";
+    return cb(new Error("Only image files are allowed!"), false);
+  }
+  cb(null, true);
+};
+
+let upload = multer({ storage: storage, fileFilter: imageFilter });
+
+let uploadMultipleFiles = multer({
+  storage: storage,
+  fileFilter: imageFilter,
+}).array("multiple_images", 3);
+
 const initWebRoute = (app) => {
   //   app.METHOD(PATH, HANDLER);
   //   router.get("/", (req, res) => {
@@ -14,6 +47,33 @@ const initWebRoute = (app) => {
   router.post("/update-user", homeController.postUpdateUser);
   router.post("/update-user/:id", homeController.postUpdateUser2);
   router.get("/", homeController.getHomePage);
+  router.get("/upload", homeController.getUploadFilePage);
+  router.post(
+    "/upload-profile-pic",
+    upload.single("profile_pic"),
+    homeController.handleUploadFile
+  );
+
+  router.post(
+    "/upload-multiple-images",
+    (req, res, next) => {
+      uploadMultipleFiles(req, res, (err) => {
+        if (
+          err instanceof multer.MulterError &&
+          err.code === "LIMIT_UNEXPECTED_FILE"
+        ) {
+          // handle multer file limit error here
+          res.send("LIMIT_UNEXPECTED_FILE");
+        } else if (err) {
+          res.send(err);
+        } else {
+          // make sure to call next() if all was well
+          next();
+        }
+      });
+    },
+    homeController.handleUploadMultipleFiles
+  );
   router.get("/home", (req, res) => {
     res.send("Hello World! Phuong Phuong");
   });

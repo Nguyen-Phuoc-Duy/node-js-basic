@@ -49,5 +49,5 @@ let deleteUser = async (req, res) => {
     messge: "ok333",
   });
 };
-
+// npm install --save-excact multer@1.4.3
 export default { getAllUsers, createNewUser, updateUser, deleteUser };

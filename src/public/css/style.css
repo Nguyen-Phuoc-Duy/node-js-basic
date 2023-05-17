@@ -37,12 +37,15 @@ body {
   .create-user-container label {
     display: block;
   }
+  .upload-file-container label {
+    display: block;
+  }
   .update-user-container label {
     display: block;
   }
-  .create-user-container .btn-submit,
+  .btn-submit,
   .update-user-container,
-  .update-user-container .btn-save {
+  .btn-save {
     margin-top: 15px;
   }
   button {
