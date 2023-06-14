@@ -1,4 +1,5 @@
 import pool from "../configs/connectDB.js";
+// postman http://localhost:3000/api/v1/...
 let getAllUsers = async (req, res) => {
   const [rows, fields] = await pool.execute("SELECT * FROM `users`");
   return res.status(200).json({
